@@ -1,0 +1,15 @@
+package cs263Project.project;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+
+@Path("/jerseyws")
+public class RestTest {
+
+    @GET
+    @Path("/test")
+    public String testMethod() {
+        return "this is a test";
+    }
+}
+
