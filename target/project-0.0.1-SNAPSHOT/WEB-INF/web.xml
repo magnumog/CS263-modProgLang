@@ -22,6 +22,7 @@
             <servlet-name>Jersey Web Application</servlet-name>
             <url-pattern>/context/*</url-pattern>
         </servlet-mapping>
-        
-
+        <welcome-file-list>
+            <welcome-file>index.jsp</welcome-file>
+        </welcome-file-list>
 </web-app>
