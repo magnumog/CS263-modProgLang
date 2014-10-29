@@ -1,6 +1,8 @@
 App Engine Java Application
 Copyright (C) 2010-2012 Google Inc.
 
+##This repo is can be viewed at this adress: http://notional-buffer-748.appspot.com/
+
 ## Skeleton application for use with App Engine Java.
 
 Requires [Apache Maven](http://maven.apache.org) 3.0 or greater, and JDK 6+ in order to run.
