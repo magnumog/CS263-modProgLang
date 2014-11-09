@@ -13,18 +13,20 @@ import com.google.appengine.api.users.UserServiceFactory;
 
 public class UserServlet extends HttpServlet {
 	
-	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException,ServletException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException,ServletException {
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
 		
-		resp.setContentType("text/html");
-		resp.getWriter().println("Sign into PTD using your google account");
+//		resp.setContentType("text/html");
+//		resp.getWriter().println("Sign into PTD using your google account");
 		
 		if(user == null) {
-			resp.getWriter().println("<a href='" + userService.createLoginURL(req.getRequestURI())+ "'> Sign in </a>");
-		} else {
-			resp.getWriter().println("<a href='" + userService.createLogoutURL(req.getRequestURI())+ "'> Sign out </a>");
-		}
+			resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
+		} 
+		//else {
+//			resp.sendRedirect(userService.createLogoutURL(req.getRequestURI()));
+//		}
+		resp.sendRedirect("/index.jsp");
 	}
 
 }

@@ -10,16 +10,28 @@
 		<link type="text/css" rel="stylesheet" href="/main.css">
 	</head>
 	<body>
+	<%
+			UserService userService = UserServiceFactory.getUserService();
+			User user = userService.getCurrentUser();		
+	%>
 		<div class="header">
 			<p>
-				<a href="/sign">Sign inn</a>
+			<%
+				if(user == null) {
+			%>
+				<a href="/sign">Sign in</a>
+			<% 
+				} else {
+			%>
+				<a href="/signOut">Sign out</a>
+			<% 
+				}
+			%>				
 				<a href="/workout.html">Add exercise</a>
 				<a href="/discussion.jsp">Discussion</a>
 			</p>			
 		</div>
 		<% 	
-			UserService userService = UserServiceFactory.getUserService();
-			User user = userService.getCurrentUser();
 			if(user != null) {
 				pageContext.setAttribute("user",user);
 		%>

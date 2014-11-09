@@ -9,6 +9,10 @@
             <servlet-class>user.UserServlet</servlet-class>
         </servlet>
         <servlet>
+            <servlet-name>signOut</servlet-name>
+            <servlet-class>user.UserServletLogout</servlet-class>
+        </servlet>
+        <servlet>
             <servlet-name>enqueue</servlet-name>
             <servlet-class>workout.Enqueue</servlet-class>
         </servlet>
@@ -24,6 +28,10 @@
             <servlet-name>workoutSession</servlet-name>
             <servlet-class>workoutSessions.WorkoutSessions</servlet-class>
         </servlet>
+        <servlet-mapping>
+            <servlet-name>signOut</servlet-name>
+            <url-pattern>/signOut</url-pattern>
+        </servlet-mapping>
         <servlet-mapping>
             <servlet-name>workoutSession</servlet-name>
             <url-pattern>/workoutsessions</url-pattern>

@@ -10,6 +10,7 @@
 <%@page import="com.google.appengine.api.users.User"%>
 <%@page import="com.google.appengine.api.users.UserServiceFactory"%>
 <%@page import="com.google.appengine.api.users.UserService"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 	<head>
 		<link type="text/css" rel="stylesheet" href="/main.css"/>
@@ -25,10 +26,10 @@
 	<%
 		} else {
 			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-			Key key = KeyFactory.createKey("workout",user.getUserId());
-			Query query = new Query("workout",key);
+// 			Key key = KeyFactory.createKey("workout",user.getUserId());
+			Query query = new Query("workout");
 			List<Entity> workoutData = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(31));
-			if(workoutData.isEmpty()) {
+			if(!workoutData.isEmpty()) {
 			%>
 				<p>Data has not been added to datastore but it will be done shortly</p>
 			<%
@@ -40,7 +41,9 @@
 				String weather = workoutTask.getProperty("weather").toString();
 				String comments = workoutTask.getProperty("comments").toString();
 				%>
-				<p>Your workout was: <%= workout %></p>
+				<%-- fix so if comments and weather is empty show other message --%>
+				<p>Hi '${fn:escapeXml(user.nickname}' workout was: <%= workout %> the number of sets was: <%= sets %> and you did this on <%= date %>
+				the weather conditions during your workout was <%= weather %> and your comments <%= comments %></p>
 				<%
 			}
 		}
