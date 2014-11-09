@@ -16,6 +16,14 @@
             <servlet-name>worker</servlet-name>
             <servlet-class>workout.Worker</servlet-class>
         </servlet>
+        <servlet>
+            <servlet-name>discussion</servlet-name>
+            <servlet-class>discussion.Discussion</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>discussion</servlet-name>
+            <url-pattern>/discussion</url-pattern>
+        </servlet-mapping>
         <servlet-mapping>
             <servlet-name>worker</servlet-name>
             <url-pattern>/worker</url-pattern>

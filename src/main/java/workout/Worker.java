@@ -30,8 +30,8 @@ public class Worker extends HttpServlet {
 		String workoutComments = req.getParameter("comments");
 		Date dateEntered = new Date();
 		
-		Key workoutKey = KeyFactory.createKey("Workout", user.getUserId());
-		Entity workoutEntity = new Entity(workoutKey);
+//		Key workoutKey = KeyFactory.createKey("Workout", user.getUserId());
+		Entity workoutEntity = new Entity("Workout");
 		workoutEntity.setProperty("DateEntered",dateEntered);
 		workoutEntity.setProperty("DateOfWorkout", date);
 		workoutEntity.setProperty("WorkoutDetails", workout);

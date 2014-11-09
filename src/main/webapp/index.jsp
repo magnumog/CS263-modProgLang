@@ -11,8 +11,11 @@
 	</head>
 	<body>
 		<div class="header">
-			<p><a href="/sign">Sign inn</a></p>
-			<p><a href="/workout.html">Add exercise</a></p>
+			<p>
+				<a href="/sign">Sign inn</a>
+				<a href="/workout.html">Add exercise</a>
+				<a href="/discussion.jsp">Discussion</a>
+			</p>			
 		</div>
 		<% 	
 			UserService userService = UserServiceFactory.getUserService();

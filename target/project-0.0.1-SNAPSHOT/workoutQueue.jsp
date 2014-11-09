@@ -34,7 +34,11 @@
 			<%
 			} else {
 				Entity workoutTask = workoutData.get(workoutData.size()-1);
+				String date = workoutTask.getProperty("date").toString();
 				String workout = workoutTask.getProperty("workout").toString();
+				String sets = workoutTask.getProperty("sets").toString();
+				String weather = workoutTask.getProperty("weather").toString();
+				String comments = workoutTask.getProperty("comments").toString();
 				%>
 				<p>Your workout was: <%= workout %></p>
 				<%
