@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
@@ -14,17 +15,15 @@ public class UserServlet extends HttpServlet {
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException,ServletException {
 		UserService userService = UserServiceFactory.getUserService();
-		
-		String thisURL = req.getRequestURI();
+		User user = userService.getCurrentUser();
 		
 		resp.setContentType("text/html");
-		if(req.getUserPrincipal() != null) {
-			resp.getWriter().println("<p>Hello, " + req.getUserPrincipal().getName() + "! you can <a href=\"" + userService.createLogoutURL(thisURL) + "\">Sign out</a>.</p>");
-			resp.sendRedirect("/index.jsp");
+		resp.getWriter().println("Sign into PTD using your google account");
+		
+		if(user == null) {
+			resp.getWriter().println("<a href='" + userService.createLoginURL(req.getRequestURI())+ "'> Sign in </a>");
 		} else {
-			resp.getWriter().println("<p>Please <a href=\"" +
-                                     userService.createLoginURL(thisURL) +
-                                     "\">sign in</a>.</p>");
+			resp.getWriter().println("<a href='" + userService.createLogoutURL(req.getRequestURI())+ "'> Sign out </a>");
 		}
 	}
 
