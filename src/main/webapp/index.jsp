@@ -21,17 +21,17 @@
 			%>
 				<%-- To run local the jsp file need to be running --%>
 				<%-- <a href="/sign">Sign in</a> --%>
-				<a href="/login.jsp">sign in</a>
+				<a href="/login.jsp">Sign in</a>
 			<% 
 				} else {
 			%>
 				<%-- <a href="/signOut">Sign out</a> --%>
-				<a href="/login.jsp">sign out</a>
+				<a href="/login.jsp">Sign out</a>
 			<% 
 				}
 			%>				
 				<a href="/workout.html">Add exercise</a>
-				<a href="/workoutsessions">view your workout sessions</a>
+				<a href="/workoutsessions">View sessions</a>
 				<a href="/discussion.jsp">Discussion</a>
 			</p>			
 		</div>

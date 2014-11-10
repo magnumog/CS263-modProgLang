@@ -8,3 +8,11 @@ h1,h2 {
 .nav {
 	text-align: center;
 }
+a:VISITED {
+}
+a:link {
+	color: blue;
+}
+a:hover {
+	color: green;
+}
