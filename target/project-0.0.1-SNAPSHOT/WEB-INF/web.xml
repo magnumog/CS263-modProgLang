@@ -21,13 +21,21 @@
             <servlet-class>workout.Worker</servlet-class>
         </servlet>
         <servlet>
-            <servlet-name>discussion</servlet-name>
-            <servlet-class>discussion.Discussion</servlet-class>
+            <servlet-name>discussionenqueue</servlet-name>
+            <servlet-class>discussion.DiscussionEnqueue</servlet-class>
         </servlet>
         <servlet>
             <servlet-name>workoutSession</servlet-name>
             <servlet-class>workoutSessions.WorkoutSessions</servlet-class>
         </servlet>
+        <servlet>
+            <servlet-name>discussionworker</servlet-name>
+            <servlet-class>discussion.DiscussionWorker</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>discussionworker</servlet-name>
+            <url-pattern>/discussionworker</url-pattern>
+        </servlet-mapping>
         <servlet-mapping>
             <servlet-name>signOut</servlet-name>
             <url-pattern>/signOut</url-pattern>
@@ -37,8 +45,8 @@
             <url-pattern>/workoutsessions</url-pattern>
         </servlet-mapping>
         <servlet-mapping>
-            <servlet-name>discussion</servlet-name>
-            <url-pattern>/discussion</url-pattern>
+            <servlet-name>discussionenqueue</servlet-name>
+            <url-pattern>/discussionenqueue</url-pattern>
         </servlet-mapping>
         <servlet-mapping>
             <servlet-name>worker</servlet-name>

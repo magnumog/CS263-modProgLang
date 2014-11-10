@@ -34,7 +34,7 @@
         </servlet>
         <servlet-mapping>
             <servlet-name>discussionworker</servlet-name>
-            <url-pattern>/discussionWorker</url-pattern>
+            <url-pattern>/discussionworker</url-pattern>
         </servlet-mapping>
         <servlet-mapping>
             <servlet-name>signOut</servlet-name>

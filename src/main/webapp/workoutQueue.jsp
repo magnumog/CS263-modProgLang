@@ -42,7 +42,7 @@
 				String comments = workoutTask.getProperty("comments").toString();
 				%>
 				<%-- fix so if comments and weather is empty show other message --%>
-				<p>Hi '${fn:escapeXml(user.nickname}' workout was: <%= workout %> the number of sets was: <%= sets %> and you did this on <%= date %>
+				<p>Hi '${fn:escapeXml(user.nickname)}' workout was: <%= workout %> the number of sets was: <%= sets %> and you did this on <%= date %>
 				the weather conditions during your workout was <%= weather %> and your comments <%= comments %></p>
 				<%
 			}

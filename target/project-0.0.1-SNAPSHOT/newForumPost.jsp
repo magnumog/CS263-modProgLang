@@ -9,7 +9,7 @@
 	</head>
 	<body>
 	<h1>New forum post</h1>
-		<form action="/newPost" method="post">
+		<form action="/discussionenqueue" method="post">
 			<input type="text" name="head">
 			<textarea name="yourPost" rows="3" cols="60"></textarea>
 			<input type="submit" value="Post new discussion">
