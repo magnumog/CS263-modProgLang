@@ -29,7 +29,7 @@
 // 			Key key = KeyFactory.createKey("workout",user.getUserId());
 			Query query = new Query("workout");
 			List<Entity> workoutData = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(31));
-			if(!workoutData.isEmpty()) {
+			if(workoutData.isEmpty()) {
 			%>
 				<p>Data has not been added to datastore but it will be done shortly</p>
 			<%

@@ -31,7 +31,8 @@ public class Enqueue extends HttpServlet {
 		Queue queue = QueueFactory.getDefaultQueue();
 		queue.add(withUrl("/worker").param("user", user.getUserId()).param("date", date).param("workout", workout).param("sets", sets).param("weather",weatherConditions).param("comments", commentsToWorkout));
 		
-		resp.sendRedirect("/workoutQueue.jsp?date=" + user.getUserId());
+		resp.sendRedirect("/workoutQueue.jsp?user=" + user.getUserId());
+//		resp.sendRedirect("/workoutQueue.jsp");
 	}
 
 }

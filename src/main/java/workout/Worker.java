@@ -21,8 +21,9 @@ import com.google.appengine.api.users.UserServiceFactory;
 public class Worker extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		UserService userService = UserServiceFactory.getUserService();
-		User user = userService.getCurrentUser();
+//		UserService userService = UserServiceFactory.getUserService();
+//		User user = userService.getCurrentUser();
+		String user = req.getParameter("user");
 		String date = req.getParameter("date");
 		String workout = req.getParameter("workout");
 		String sets = req.getParameter("sets");
@@ -32,6 +33,7 @@ public class Worker extends HttpServlet {
 		
 //		Key workoutKey = KeyFactory.createKey("Workout", user.getUserId());
 		Entity workoutEntity = new Entity("Workout");
+		workoutEntity.setProperty("User", user);
 		workoutEntity.setProperty("DateEntered",dateEntered);
 		workoutEntity.setProperty("DateOfWorkout", date);
 		workoutEntity.setProperty("WorkoutDetails", workout);
@@ -41,10 +43,7 @@ public class Worker extends HttpServlet {
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		datastore.put(workoutEntity);
-		
-//		resp.sendRedirect("/workout.jsp");
-		
-		
+				
 	}
 
 }

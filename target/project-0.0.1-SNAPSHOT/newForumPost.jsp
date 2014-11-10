@@ -8,8 +8,7 @@
 		<link type="text/css" rel="stylesheet" href="/main.css">
 	</head>
 	<body>
-		<jsp:include page="/header.jsp" />		
-		<h1>New forum post</h1>
+	<h1>New forum post</h1>
 		<form action="/newPost" method="post">
 			<input type="text" name="head">
 			<textarea name="yourPost" rows="3" cols="60"></textarea>

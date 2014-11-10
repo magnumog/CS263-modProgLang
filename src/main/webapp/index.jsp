@@ -14,20 +14,24 @@
 			UserService userService = UserServiceFactory.getUserService();
 			User user = userService.getCurrentUser();		
 	%>
-		<div class="header">
+		<div class="nav">
 			<p>
 			<%
 				if(user == null) {
 			%>
-				<a href="/sign">Sign in</a>
+				<%-- To run local the jsp file need to be running --%>
+				<%-- <a href="/sign">Sign in</a> --%>
+				<a href="/login.jsp">sign in</a>
 			<% 
 				} else {
 			%>
-				<a href="/signOut">Sign out</a>
+				<%-- <a href="/signOut">Sign out</a> --%>
+				<a href="/login.jsp">sign out</a>
 			<% 
 				}
 			%>				
 				<a href="/workout.html">Add exercise</a>
+				<a href="/workoutsessions">view your workout sessions</a>
 				<a href="/discussion.jsp">Discussion</a>
 			</p>			
 		</div>
@@ -40,6 +44,7 @@
 			} else {
 		%>
 		<h1>Welcome to your personal training diary please sign in to start using it</h1>
+		<h2>You need a google account to start using the diary</h2>
 		<%
 			}
 		%>
