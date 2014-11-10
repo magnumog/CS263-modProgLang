@@ -48,11 +48,11 @@ public class WorkoutSessions extends HttpServlet {
 		} else {
 			out.println("<table>");
 			out.println("<tr>");
-			out.println("<td>" + "Date" + "</td>");
-			out.println("<td>" + "Workout session" + "</td>");
-			out.println("<td>" + "Sets" + "</td>");
-			out.println("<td>" + "Weather" + "</td>");
-			out.println("<td>" + "Comments" + "</td>");
+			out.println("<td>" + "<h2>Date</h2>" + "</td>");
+			out.println("<td>" + "<h2>Workout session</h2>" + "</td>");
+			out.println("<td>" + "<h2>Sets</h2>" + "</td>");
+			out.println("<td>" + "<h2>Weather</h2>" + "</td>");
+			out.println("<td>" + "<h2>Comments</h2>" + "</td>");
 			out.println("</tr>");
 			for(Entity ent : entity) {
 				String date = ent.getProperty("DateOfWorkout").toString();
