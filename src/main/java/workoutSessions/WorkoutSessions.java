@@ -14,14 +14,23 @@ import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.Filter;
+import com.google.appengine.api.datastore.Query.FilterOperator;
+import com.google.appengine.api.datastore.Query.FilterPredicate;
+import com.google.appengine.api.users.User;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
 
 public class WorkoutSessions extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+		UserService userService = UserServiceFactory.getUserService();
+		User user = userService.getCurrentUser();
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
+		Filter filter = new FilterPredicate("User",FilterOperator.EQUAL,user.getUserId());
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Query query = new Query("Workout").addSort("DateOfWorkout",Query.SortDirection.DESCENDING);
+		Query query = new Query("Workout").addSort("DateOfWorkout",Query.SortDirection.DESCENDING).setFilter(filter);
 		List<Entity> entity = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(31));
 		out.println("<html>");
 
