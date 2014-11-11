@@ -24,11 +24,12 @@ public class DiscussionEnqueue extends HttpServlet {
 		User user = userService.getCurrentUser();
 		
 		String topic = req.getParameter("topic");
-		String yourPost = req.getParameter("yourPost");
+		String post = req.getParameter("post");
 		
-		//NEED TO FIX THIS!!
 		Queue queue = QueueFactory.getDefaultQueue();
-		queue.add(withUrl("/discussionworker").param("topic", topic).param("post", yourPost));
+		queue.add(withUrl("/discussionworker").param("user", user.getUserId()).param("topic", topic).param("post", post));
+		//NEED TO GET THIS WORKING IF NOT THE SAME MESSAGE WILL BE SHOWN EACH TIME
+//		resp.sendRedirect("/discussionQueue.jsp?="+user.getUserId());
 		resp.sendRedirect("/discussionQueue.jsp");
 	}
 

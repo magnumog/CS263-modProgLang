@@ -14,16 +14,16 @@ import com.google.appengine.api.datastore.Entity;
 
 public class DiscussionWorker extends HttpServlet {
 	
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-//		String user = req.getParameter("user");
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+		String user = req.getParameter("user");
 		String topic = req.getParameter("topic");
-		String yourPost = req.getParameter("yourPost");
+		String post = req.getParameter("post");
 		Date date = new Date();
 		
-		Entity discussionEntity = new Entity("Discussions");
-//		discussionEntity.setProperty("User", user);
-		discussionEntity.setProperty("topic", topic);
-		discussionEntity.setProperty("Post",yourPost);
+		Entity discussionEntity = new Entity("Discussion");
+		discussionEntity.setProperty("User", user);
+		discussionEntity.setProperty("Topic", topic);
+		discussionEntity.setProperty("Post",post);
 		discussionEntity.setProperty("Date", date);
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();

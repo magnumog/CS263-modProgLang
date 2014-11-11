@@ -12,7 +12,7 @@
 <html>
 	<head>
 		<title>New discussion added</title>
-		<link type="text/css" rel="stylesheet" href="/main.css"/>s
+		<link type="text/css" rel="stylesheet" href="/main.css"/>
 	</head>
 	<body>
 		<%
@@ -32,18 +32,17 @@
 				<%
 				} else {
 					Entity discussionTask = discussionData.get(discussionData.size()-1);
-					String StringUser = discussionTask.getProperty("user").toString();
-					String topic = discussionTask.getProperty("topic").toString();
-					String post = discussionTask.getProperty("post").toString();
-					String date = discussionTask.getProperty("date").toString();
+					String StringUser = discussionTask.getProperty("User").toString();
+					String topic = discussionTask.getProperty("Topic").toString();
+					String post = discussionTask.getProperty("Post").toString();
+					String date = discussionTask.getProperty("Date").toString();
 					%>
-					<%-- NEEDS FIXING IT DOES NOT WORK PROPERLY --%>
-					<p>Hi, '${fn:escapeXml(user.nickname)}' your topic was <%= topic %> and your post was <%= post %>. They where posted at <%= date %></p>
+					<%-- CANT SEEM TO GET THE NICKNAME FROM USER --%>
+					<p>Hi, ${fn:escapeXml(user.nickname)} your topic was <%= topic %> and your post was <%= post %>. Your discussion post was posted on <%= date %></p>
 					<%
 				}
 			} 
 		%>
 	</body>
 </html>
-
 <%-- //[END all] --%>
