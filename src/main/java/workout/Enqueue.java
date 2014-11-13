@@ -33,7 +33,7 @@ public class Enqueue extends HttpServlet {
 		
 		resp.sendRedirect("/workoutQueue.jsp");
 		//THIS NEEDS TO WORK TOMORROW!!
-//		resp.sendRedirect("/workoutQueue.jsp?="+user.UserID());"
+		resp.sendRedirect("/workoutQueue.jsp?="+workout);
 	}
 
 }

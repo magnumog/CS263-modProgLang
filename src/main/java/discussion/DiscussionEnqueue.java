@@ -29,8 +29,8 @@ public class DiscussionEnqueue extends HttpServlet {
 		Queue queue = QueueFactory.getDefaultQueue();
 		queue.add(withUrl("/discussionworker").param("user", user.getUserId()).param("topic", topic).param("post", post));
 		//NEED TO GET THIS WORKING IF NOT THE SAME MESSAGE WILL BE SHOWN EACH TIME
-//		resp.sendRedirect("/discussionQueue.jsp?="+user.getUserId());
-		resp.sendRedirect("/discussionQueue.jsp");
+		resp.sendRedirect("/discussionQueue.jsp?user="+user.getUserId());
+//		resp.sendRedirect("/discussionQueue.jsp");
 	}
 
 }

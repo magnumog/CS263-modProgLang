@@ -19,6 +19,7 @@
 	</head>
 	<body>
 	<%
+		String workout = request.getParameter("workout");
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
 		if(user == null) {
@@ -37,7 +38,7 @@
 			} else {
 				Entity workoutTask = workoutData.get(workoutData.size()-1);
 				String date = workoutTask.getProperty("DateOfWorkout").toString();
-				String workout = workoutTask.getProperty("WorkoutDetails").toString();
+//				String workout = workoutTask.getProperty("WorkoutDetails").toString();
 				String sets = workoutTask.getProperty("WorkoutSets").toString();
 				String weather = workoutTask.getProperty("Weather").toString();
 				String comments = workoutTask.getProperty("Comments").toString();
