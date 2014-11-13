@@ -1,4 +1,6 @@
 <%-- //[START all] --%>
+<%@page import="com.google.appengine.api.datastore.KeyFactory"%>
+<%@page import="com.google.appengine.api.datastore.Key"%>
 <%@page import="com.google.appengine.api.datastore.FetchOptions"%>
 <%@page import="java.util.List"%>
 <%@page import="com.google.appengine.api.datastore.Query"%>
@@ -18,13 +20,15 @@
 		<%
 			UserService userService = UserServiceFactory.getUserService();
 			User user = userService.getCurrentUser();
+			String userID = request.getParameter("User");
 			if(user==null) {
 		%>
 				<p>You need to be signed in to post in the discussion forum</p>
 		<%
 			} else {
 				DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-				Query query = new Query("Discussion");
+				Key key = KeyFactory.createKey("Discussion",userID);
+				Query query = new Query("Discussion",key);
 				List<Entity> discussionData = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(31));
 				if(discussionData.isEmpty()) {
 				%>
@@ -33,8 +37,8 @@
 				} else {
 					Entity discussionTask = discussionData.get(discussionData.size()-1);
 					String StringUser = discussionTask.getProperty("User").toString();
-					String topic = discussionTask.getProperty("Topic").toString();
-					String post = discussionTask.getProperty("Post").toString();
+ 					String topic = discussionTask.getProperty("Topic").toString();
+ 					String post = discussionTask.getProperty("Post").toString();
 					String date = discussionTask.getProperty("Date").toString();
 					%>
 					<%-- CANT SEEM TO GET THE NICKNAME FROM USER --%>

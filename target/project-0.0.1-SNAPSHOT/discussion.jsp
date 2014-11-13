@@ -8,7 +8,7 @@
 		<h1>Discussion forum for your personal training diary</h1>
 		<h2><a href="/newForumPost.html">New post</a></h2>
 		<%-- NOT IMPLEMENTED YET --%>
-		<%--><h2><a href="/yourFormmPosts">Your posts</h2>--%>
+		<%--><h2><a href="/yourPosts">Your posts</h2>--%>
 	</body>
 </html>
 <%-- //[END all] --%>
