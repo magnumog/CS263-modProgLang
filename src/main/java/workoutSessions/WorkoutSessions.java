@@ -42,6 +42,7 @@ public class WorkoutSessions extends HttpServlet {
 		
 		//body
 		out.println("<body>");
+		out.println("<jsp:include page=\"/navbar.jsp\"></jsp:include>");
 		out.println("<h1>Your registered training sessions</h1>");
 		if(entity.isEmpty()) {
 			out.println("<p>You have not added anything yet</p>");

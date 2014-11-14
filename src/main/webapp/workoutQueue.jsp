@@ -14,7 +14,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 	<head>
-		<link type="text/css" rel="stylesheet" href="/main.css"/>
+		<jsp:include page="/csslink.jsp"></jsp:include>
 		<title>Workout session added</title>	
 	</head>
 	<body>

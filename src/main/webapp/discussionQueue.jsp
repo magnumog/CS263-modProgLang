@@ -12,9 +12,10 @@
 <html>
 	<head>
 		<title>New discussion added</title>
-		<link type="text/css" rel="stylesheet" href="/main.css"/>
+		<jsp:include page="/csslink.jsp"></jsp:include>
 	</head>
 	<body>
+		<jsp:include page="/navbar.jsp"></jsp:include>
 		<%
 			UserService userService = UserServiceFactory.getUserService();
 			User user = userService.getCurrentUser();

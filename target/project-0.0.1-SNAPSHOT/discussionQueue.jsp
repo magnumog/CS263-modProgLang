@@ -15,6 +15,7 @@
 		<link type="text/css" rel="stylesheet" href="/main.css"/>
 	</head>
 	<body>
+		<jsp:include page="/navbar.jsp"></jsp:include>
 		<%
 			UserService userService = UserServiceFactory.getUserService();
 			User user = userService.getCurrentUser();

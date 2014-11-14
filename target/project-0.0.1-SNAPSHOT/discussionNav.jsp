@@ -1,3 +1,5 @@
-<a href="/newForumPost.jsp">New post</a>
-<%-- NOT IMPLEMENTED YET --%>
-<%--><h2><a href="/yourPosts.jsp">Your posts</h2>--%>
+<div class="nav">
+	<a href="/newForumPost.jsp">New post</a>
+	<%-- NOT IMPLEMENTED YET --%>
+	<a href="/yourDiscussionPosts.jsp">Your posts</a>
+</div>

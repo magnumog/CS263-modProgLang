@@ -6,11 +6,11 @@
 <html>
 	<head>
 		<title>Sign inn to PTD</title>
-		<link type="text/css" rel="stylesheet" href="/main.css">
+		<jsp:include page="/csslink.jsp"></jsp:include>
 	</head>
 	<body>
-		<h1>Sign inn to PTD</h1>
 		<jsp:include page="/navbar.jsp"></jsp:include>
+		<h1>Sign inn to PTD</h1>
 		<% 
 			UserService userService = UserServiceFactory.getUserService();
 			User user = userService.getCurrentUser();
