@@ -18,6 +18,7 @@
 		<title>Workout session added</title>	
 	</head>
 	<body>
+	<jsp:include page="/navbar.jsp"></jsp:include>
 	<%
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
@@ -27,6 +28,7 @@
 	<%
 		} else {
 			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+// 			Key key = KeyFactory.createKey("workout",user.getUserId());
 			Query query = new Query("Workout");
 			List<Entity> workoutData = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(31));
 			if(workoutData.isEmpty()) {

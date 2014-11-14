@@ -1,21 +1,15 @@
-<%-- //[START all] --%>
-<%@page import="com.google.appengine.api.users.User"%>
-<%@page import="com.google.appengine.api.users.UserServiceFactory"%>
-<%@page import="com.google.appengine.api.users.UserService"%>
 <html>
 	<head>
 		<title>New forum post</title>
 		<link type="text/css" rel="stylesheet" href="/main.css">
 	</head>
 	<body>
-	<h1>New forum post</h1>
+		<jsp:include page="/navbar.jsp"></jsp:include>
+		<h1>New forum post</h1>
 		<form action="/discussionenqueue" method="post">
-			<input type="text" name="head">
-			<textarea name="yourPost" rows="3" cols="60"></textarea>
+				<textarea name="topic" placeholder="topic" rows="3" cols="60"></textarea>
+				<textarea name="post" placeholder="Discuss" rows="3" cols="60"></textarea>
 			<input type="submit" value="Post new discussion">
 		</form>
 	</body>
-
 </html>
-
-<%-- //[END all] --%>

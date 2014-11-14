@@ -10,6 +10,7 @@
 	</head>
 	<body>
 		<h1>Sign inn to PTD</h1>
+		<jsp:include page="/navbar.jsp"></jsp:include>
 		<% 
 			UserService userService = UserServiceFactory.getUserService();
 			User user = userService.getCurrentUser();

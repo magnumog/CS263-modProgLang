@@ -18,8 +18,8 @@
 		<title>Workout session added</title>	
 	</head>
 	<body>
+	<jsp:include page="/navbar.jsp"></jsp:include>
 	<%
-		String workout = request.getParameter("workout");
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
 		if(user == null) {
@@ -28,8 +28,8 @@
 	<%
 		} else {
 			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
- 			Key key = KeyFactory.createKey("Workout",user.getUserId());
-			Query query = new Query("Workout",key);
+// 			Key key = KeyFactory.createKey("workout",user.getUserId());
+			Query query = new Query("Workout");
 			List<Entity> workoutData = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(31));
 			if(workoutData.isEmpty()) {
 			%>
@@ -38,7 +38,7 @@
 			} else {
 				Entity workoutTask = workoutData.get(workoutData.size()-1);
 				String date = workoutTask.getProperty("DateOfWorkout").toString();
-				String workoutString = workoutTask.getProperty("WorkoutDetails").toString();
+				String workout = workoutTask.getProperty("WorkoutDetails").toString();
 				String sets = workoutTask.getProperty("WorkoutSets").toString();
 				String weather = workoutTask.getProperty("Weather").toString();
 				String comments = workoutTask.getProperty("Comments").toString();

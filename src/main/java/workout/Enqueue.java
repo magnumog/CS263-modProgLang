@@ -3,7 +3,6 @@ package workout;
 import static com.google.appengine.api.taskqueue.TaskOptions.Builder.withUrl;
 
 import java.io.IOException;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -33,7 +32,7 @@ public class Enqueue extends HttpServlet {
 		
 		resp.sendRedirect("/workoutQueue.jsp");
 		//THIS NEEDS TO WORK TOMORROW!!
-		resp.sendRedirect("/workoutQueue.jsp?="+workout);
+//		resp.sendRedirect("/workoutQueue.jsp?="+user.UserID());"
 	}
 
 }
