@@ -1,5 +1,5 @@
 <div class="nav">
-	<a href="/newForumPost.jsp">New post</a>
+	<a href="/discussion/newForumPost.jsp">New post</a>
 	<%-- NOT IMPLEMENTED YET --%>
-	<a href="/yourDiscussionPosts.jsp">Your posts</a>
+	<a href="/discussion/yourDiscussionPosts.jsp">Your posts</a>
 </div>

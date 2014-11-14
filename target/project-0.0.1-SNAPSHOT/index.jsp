@@ -7,7 +7,7 @@
 <html>
 	<head>
 		<title>Welcome to your personal training diary</title>
-		<link type="text/css" rel="stylesheet" href="/main.css">
+		<jsp:include page="/csslink.jsp"></jsp:include>
 	</head>
 	<body>
 	<%
