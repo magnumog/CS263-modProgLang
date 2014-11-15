@@ -4,7 +4,7 @@
 		<jsp:include page="/csslink.jsp"></jsp:include>
 	</head>
 	<body>
-		<jsp:include page="/navbar.jsp"></jsp:include>
+		<jsp:include page="/navbars/navbar.jsp"></jsp:include>
 		<h1>Add workout</h1>
 		<form action="/enqueue" method="post">
 				<input type="date" name="date">

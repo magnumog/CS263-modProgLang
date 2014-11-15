@@ -18,7 +18,7 @@
 		<title>Workout session added</title>	
 	</head>
 	<body>
-	<jsp:include page="/navbar.jsp"></jsp:include>
+	<jsp:include page="/navbars/navbar.jsp"></jsp:include>
 	<%
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();

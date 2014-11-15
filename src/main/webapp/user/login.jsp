@@ -9,7 +9,7 @@
 		<jsp:include page="/csslink.jsp"></jsp:include>
 	</head>
 	<body>
-		<jsp:include page="/navbar.jsp"></jsp:include>
+		<jsp:include page="/navbars/navbar.jsp"></jsp:include>
 		<h1>Sign inn to PTD</h1>
 		<% 
 			UserService userService = UserServiceFactory.getUserService();

@@ -14,7 +14,7 @@
 			UserService userService = UserServiceFactory.getUserService();
 			User user = userService.getCurrentUser();		
 	%>
-	<jsp:include page="/navbar.jsp"></jsp:include>
+	<jsp:include page="/navbars/navbar.jsp"></jsp:include>
 		<% 	
 			if(user != null) {
 				pageContext.setAttribute("user",user);
