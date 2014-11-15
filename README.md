@@ -1,7 +1,15 @@
 App Engine Java Application
 Copyright (C) 2010-2012 Google Inc.
 
-##This repo is can be viewed at this web-address: http://notional-buffer-748.appspot.com/
+#This repo is can be viewed at this web-address: http://notional-buffer-748.appspot.com/
+
+#TODO
+##Fix queue jsp files
+##Fix your discussion jsp file keep getting 500 error
+##Fix message sending
+##Error handling in workout and discussion enqueue(user is null)
+##Create map with start pos of workout session and what to do
+##Possibility to post new posts into a discussion
 
 ## Skeleton application for use with App Engine Java.
 

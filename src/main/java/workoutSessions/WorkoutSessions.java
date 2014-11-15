@@ -26,7 +26,7 @@ public class WorkoutSessions extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
-		resp.setContentType("text/html");
+		resp.setContentType("jsp");
 		PrintWriter out = resp.getWriter();
 		Filter filter = new FilterPredicate("User",FilterOperator.EQUAL,user.getUserId());
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();

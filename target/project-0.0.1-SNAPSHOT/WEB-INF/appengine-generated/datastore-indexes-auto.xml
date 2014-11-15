@@ -1,11 +1,17 @@
-<!-- Indices written at Fri, 14 Nov 2014 14:07:22 PST -->
+<!-- Indices written at Fri, 14 Nov 2014 15:33:05 PST -->
 
 <datastore-indexes>
 
-    <!-- Used 3 times in query history -->
+    <!-- Used 5 times in query history -->
     <datastore-index kind="Workout" ancestor="false" source="auto">
         <property name="User" direction="asc"/>
         <property name="DateOfWorkout" direction="desc"/>
+    </datastore-index>
+
+    <!-- Used 5 times in query history -->
+    <datastore-index kind="Discussion" ancestor="false" source="auto">
+        <property name="User" direction="asc"/>
+        <property name="Date" direction="desc"/>
     </datastore-index>
 
 </datastore-indexes>
