@@ -32,7 +32,8 @@ public class MessageWorker extends HttpServlet {
 		messageEntity.setProperty("Topic", topic);
 		messageEntity.setProperty("Post", post);
 		messageEntity.setProperty("FromUser", fromUser);
-		messageEntity.setProperty("FromUserId", user.getUserId());
+		//this is not working
+//		messageEntity.setProperty("FromUserId", user.getUserId().toString());
 		messageEntity.setProperty("DateSendt", date);
 		//Try to implement where user can tell if message is read or not
 		messageEntity.setProperty("MessageRead", false);

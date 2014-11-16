@@ -24,6 +24,7 @@
 			<a href="/workoutsessions">View sessions</a>
 			<a href="/discussion/discussion.jsp">Discussion</a>
 			<a href="/message/message.jsp">Messages</a>
+			<a href="/map/map.jsp">Map</a>
 		<% 
 			}
 		%>				

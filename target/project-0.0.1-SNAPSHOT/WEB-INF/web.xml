@@ -33,19 +33,19 @@
             <servlet-class>discussion.DiscussionWorker</servlet-class>
         </servlet>
         <servlet>
-            <servlet-name>msgenqueue</servlet-name>
+            <servlet-name>messageenqueue</servlet-name>
             <servlet-class>message.MessageEnqueue</servlet-class>
         </servlet>
         <servlet>
-            <servlet-name>msgworker</servlet-name>
+            <servlet-name>messageworker</servlet-name>
             <servlet-class>message.MessageWorker</servlet-class>
         </servlet>
         <servlet-mapping>
-            <servlet-name>msgworker</servlet-name>
+            <servlet-name>messageworker</servlet-name>
             <url-pattern>/messageworker</url-pattern>
         </servlet-mapping>
         <servlet-mapping>
-            <servlet-name>msgenqueue</servlet-name>
+            <servlet-name>messageenqueue</servlet-name>
             <url-pattern>/messageenqueue</url-pattern>
         </servlet-mapping>
         <servlet-mapping>
