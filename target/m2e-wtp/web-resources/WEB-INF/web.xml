@@ -32,6 +32,22 @@
             <servlet-name>discussionworker</servlet-name>
             <servlet-class>discussion.DiscussionWorker</servlet-class>
         </servlet>
+        <servlet>
+            <servlet-name>messageenqueue</servlet-name>
+            <servlet-class>message.MessageEnqueue</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>messageworker</servlet-name>
+            <servlet-class>message.MessageWorker</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>messageworker</servlet-name>
+            <url-pattern>/messageworker</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+            <servlet-name>messageenqueue</servlet-name>
+            <url-pattern>/messageenqueue</url-pattern>
+        </servlet-mapping>
         <servlet-mapping>
             <servlet-name>discussionworker</servlet-name>
             <url-pattern>/discussionworker</url-pattern>

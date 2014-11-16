@@ -7,9 +7,7 @@
 	<body>
 		<jsp:include page="/navbars/navbar.jsp"></jsp:include>
 		<jsp:include page="/navbars/messagenav.jsp"></jsp:include>
-		<h1>Messags</h1>
+		<h1>Messages</h1>
 	</body>
-
 </html>
-
 <%-- //[END all] --%>

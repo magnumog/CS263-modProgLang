@@ -9,6 +9,7 @@
 		<h1>Send message to other users</h1>
 		<form action="/messageenqueue" method="post">
 			<input type="text" placeholder="Username" name="ToUser">
+			<input type="text" placeholder="Topic" name="Topic">
 			<textarea name="Message" placeholder="Message" rows="3" cols="60"></textarea>
 			<input type="submit" value="Send message">
 		</form>
