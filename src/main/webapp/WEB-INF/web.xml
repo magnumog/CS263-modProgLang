@@ -40,6 +40,30 @@
             <servlet-name>messageworker</servlet-name>
             <servlet-class>message.MessageWorker</servlet-class>
         </servlet>
+        <servlet>
+            <servlet-name>mapplace</servlet-name>
+            <servlet-class>map.PlaceInfo</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>mapinfo</servlet-name>
+            <servlet-class>map.WorkoutInfo</servlet-class>
+        </servlet>
+        <servlet>
+            <servlet-name>mapworker</servlet-name>
+            <servlet-class>map.MapWorker</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>mapworker</servlet-name>
+            <url-pattern>/mapworker</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+            <servlet-name>mapinfo</servlet-name>
+            <url-pattern>/mapinfo</url-pattern>
+        </servlet-mapping>
+        <servlet-mapping>
+            <servlet-name>mapplace</servlet-name>
+            <url-pattern>/placeinfo</url-pattern>
+        </servlet-mapping>
         <servlet-mapping>
             <servlet-name>messageworker</servlet-name>
             <url-pattern>/messageworker</url-pattern>

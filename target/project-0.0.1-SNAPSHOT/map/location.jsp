@@ -53,7 +53,7 @@
 			<h1>Choose your wokout location</h1>
 			<div id="map_canvas" style="width:100%;height:400px"></div>
 			<div id="marker_data">
-		        <form id="createForm" action="" method="post" accept-charset="utf-8">
+		        <form id="createWorkoutSession" action="" method="post" accept-charset="utf-8">
 		            <input type="text" name="address" id="address" class="form-control">
 		            <input type="hidden" name="lat" id="lat" class="form-control">
 		            <input type="hidden" name="lng" id="lng" class="form-control">

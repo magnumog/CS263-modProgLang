@@ -7,7 +7,9 @@
 	User user = userService.getCurrentUser();
 	if(user!= null) {
 %>
-		<a href="/map/addWorkout.jsp">Setup workout session</a>
+		<div class="nav">
+			<a href="/map/newSession.jsp">Setup workout session</a>
+		</div>
 <% 
 	}
 %>
