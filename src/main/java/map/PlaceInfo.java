@@ -25,10 +25,12 @@ public class PlaceInfo extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
-		String workoutAdr = req.getParameter("adress");
+		
+		String workoutAdr = req.getParameter("address");
 		String lat = req.getParameter("lat");
 		String lng = req.getParameter("lng");
 		String userString = user.getUserId().toString();
+//		String userString = "Shot";
 		
 		HttpSession session = req.getSession();
 		Queue queue = QueueFactory.getDefaultQueue();
