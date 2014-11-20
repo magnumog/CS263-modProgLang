@@ -12,6 +12,7 @@
 				<textarea name="sets" placeholder="Number of sets completed" rows="3" cols="60"></textarea>
 				<textarea name="weather" placeholder="Weather conditions" rows="3" cols="60"></textarea>
 				<textarea name="comments" placeholder="Comments" rows="3" cols="60"></textarea>
+				<input type="file" name="file">
 			<input type="submit" value="submit workout">
 		</form>
 	</body>

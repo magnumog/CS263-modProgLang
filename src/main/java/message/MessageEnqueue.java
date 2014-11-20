@@ -21,6 +21,7 @@ public class MessageEnqueue extends HttpServlet {
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
 		
+		//change the thing for online
 		String toUser = req.getParameter("ToUser");
 		String topic = req.getParameter("Topic");
 		String post = req.getParameter("Message");

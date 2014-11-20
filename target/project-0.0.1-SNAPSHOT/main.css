@@ -8,6 +8,13 @@ h1,h2 {
 .nav {
 	text-align: center;
 }
+.centertable{
+	text-align: center;
+	position: center;
+}
+table{
+	text-align: center;
+}
 a:VISITED {
 }
 a:link {

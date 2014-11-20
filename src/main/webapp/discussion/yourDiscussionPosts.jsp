@@ -11,6 +11,8 @@
 <%@page import="com.google.appengine.api.users.User"%>
 <%@page import="com.google.appengine.api.users.UserServiceFactory"%>
 <%@page import="com.google.appengine.api.users.UserService"%>
+<%-- THIS KEEPS CRASHING WHEN RUNNING LOCALY BUT NOT --%> 
+<%-- WHEN RUNNING ON APPSPOT --%>
 <html>
 	<head>
 		<title>Your discussion posts</title>
@@ -25,7 +27,7 @@
 		<h1>Discussion topics you have contributed to</h1>
 		<%
 		if(user!= null) {
-			Filter filter = new FilterPredicate("User", FilterOperator.EQUAL,user.getUserId());
+			Filter filter = new FilterPredicate("User", FilterOperator.EQUAL, user.getUserId());
 			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 			Query query = new Query("Discussion").addSort("Date",Query.SortDirection.DESCENDING).setFilter(filter);
 			List<Entity> entity = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(31));
@@ -35,6 +37,7 @@
 		<% } else {
 		%>
 				<p>Your discussion posts so far</p>
+				<div class="centertable">
 				<table>
 				<tr>
 					<td><h2>Topic</h2></td>
@@ -54,10 +57,11 @@
 					</tr>
 		<%
 				}
-			}
 		%>
-		</table>
+				</table>
+				</div>
 		<%
+			}
 		} else {
 		%>
 		<h1>You need to sign in to use this function</h1>
