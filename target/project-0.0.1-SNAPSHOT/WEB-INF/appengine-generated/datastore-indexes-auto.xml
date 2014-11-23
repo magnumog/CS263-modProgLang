@@ -1,17 +1,4 @@
-<!-- Indices written at Thu, 20 Nov 2014 12:47:14 PST -->
+<!-- Indices written at Sat, 22 Nov 2014 22:20:39 PST -->
 
-<datastore-indexes>
+<datastore-indexes/>
 
-    <!-- Used 2 times in query history -->
-    <datastore-index kind="Discussion" ancestor="false" source="auto">
-        <property name="User" direction="asc"/>
-        <property name="Date" direction="desc"/>
-    </datastore-index>
-
-    <!-- Used 1 time in query history -->
-    <datastore-index kind="Message" ancestor="false" source="auto">
-        <property name="ToUser" direction="asc"/>
-        <property name="DateSendt" direction="desc"/>
-    </datastore-index>
-
-</datastore-indexes>
