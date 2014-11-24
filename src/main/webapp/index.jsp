@@ -19,7 +19,7 @@
 			if(user != null) {
 				pageContext.setAttribute("user",user);
 		%>
-		<h1>Hi ${fn:escapeXml(user.nickname)} Welcome to your personal training diary</h1>
+		<h1>Hi ${fn:escapeXml(user.nickname)} Welcome to your personal training diary wlk</h1>
 		<%
 			} else {
 		%>

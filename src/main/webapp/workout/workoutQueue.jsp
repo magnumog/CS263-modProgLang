@@ -15,6 +15,7 @@
 <html>
 	<head>
 		<jsp:include page="/csslink.jsp"></jsp:include>
+		<meta http-equiv="refresh" content="5;url=http://notional-buffer-748.appspot.com/" />
 		<title>Workout session added</title>	
 	</head>
 	<body>
@@ -29,12 +30,13 @@
 	<%
 		} else {
 			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
- 			Key key = KeyFactory.createKey("Workout",workout);
+ 			Key key = KeyFactory.createKey("WorkoutDetails",workout);
 			Query query = new Query("Workout",key);
 			List<Entity> workoutData = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(31));
 			if(workoutData.isEmpty()) {
 			%>
 				<p>Data has not been added to datastore but it will be done shortly</p>
+				<p><%= workout %></p>
 			<%
 			} else {
 				Entity workoutTask = workoutData.get(workoutData.size()-1);
@@ -51,7 +53,7 @@
 			}
 		}
 	%>
-	
+	<p>You will be redirected in 5 seconds</p>
 	</body>
 </html>
 
