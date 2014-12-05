@@ -52,6 +52,14 @@
             <servlet-name>mapworker</servlet-name>
             <servlet-class>map.MapWorker</servlet-class>
         </servlet>
+        <servlet>
+            <servlet-name>serve</servlet-name>
+            <servlet-class>blob.Serve</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>serve</servlet-name>
+            <url-pattern>/serve</url-pattern>
+        </servlet-mapping>
         <servlet-mapping>
             <servlet-name>mapworker</servlet-name>
             <url-pattern>/mapworker</url-pattern>

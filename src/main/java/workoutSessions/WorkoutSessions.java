@@ -54,6 +54,7 @@ public class WorkoutSessions extends HttpServlet {
 			out.println("<td>" + "<h2>Sets</h2>" + "</td>");
 			out.println("<td>" + "<h2>Weather</h2>" + "</td>");
 			out.println("<td>" + "<h2>Comments</h2>" + "</td>");
+			out.println("<td>" + "<h2>file</h2>" + "</td>");
 			out.println("</tr>");
 			for(Entity ent : entity) {
 				String date = ent.getProperty("DateOfWorkout").toString();
@@ -68,6 +69,10 @@ public class WorkoutSessions extends HttpServlet {
 				out.println("<td>" + sets + "</td>");
 				out.println("<td>" + weather + "</td>");
 				out.println("<td>" + comments + "</td>");
+				if(ent.getProperty("file")!=null) {
+					
+					out.println("<td>" +"<a href=/serve?blob-key="+ent.getProperty("file").toString()+">File</a>"+"</td>");
+				}
 				out.println("</tr>");
 			}
 			out.println("</table>");

@@ -1,0 +1,6 @@
+E7.7
+
+i) 	To extract the rotation axis and angle from the rotation matrix I whould do the following
+    start by making the identiy matrix for the n dimensions, then calculate the skew matrix
+    from the matrix you have been given. Calculate the power of the skew matrix, and then insert
+    the calculated stuff into the formula. Which is Rotn(?)=I3+sin ?ñ+(1 ? cos ?)ñ	

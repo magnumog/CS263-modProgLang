@@ -29,6 +29,7 @@ public class Worker extends HttpServlet {
 		String sets = req.getParameter("sets");
 		String weatherConditions = req.getParameter("weather");
 		String workoutComments = req.getParameter("comments");
+		String file = req.getParameter("file");
 		Date dateEntered = new Date();
 		
 //		Key workoutKey = KeyFactory.createKey("Workout", user.getUserId());
@@ -40,6 +41,7 @@ public class Worker extends HttpServlet {
 		workoutEntity.setProperty("WorkoutSets", sets);
 		workoutEntity.setProperty("Weather", weatherConditions);
 		workoutEntity.setProperty("Comments", workoutComments);
+		workoutEntity.setProperty("file", file);
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		datastore.put(workoutEntity);
