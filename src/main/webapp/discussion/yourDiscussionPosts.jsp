@@ -1,4 +1,8 @@
 <%-- //[START all] --%>
+<%@page import="java.util.logging.Level"%>
+<%@page import="com.google.appengine.api.memcache.ErrorHandlers"%>
+<%@page import="com.google.appengine.api.memcache.MemcacheServiceFactory"%>
+<%@page import="com.google.appengine.api.memcache.MemcacheService"%>
 <%@page import="com.google.appengine.api.datastore.FetchOptions"%>
 <%@page import="com.google.appengine.api.datastore.Entity"%>
 <%@page import="java.util.List"%>
@@ -22,15 +26,22 @@
 		<%
 			UserService userService = UserServiceFactory.getUserService();
 			User user = userService.getCurrentUser();
+			MemcacheService synCahce = MemcacheServiceFactory.getMemcacheService();
+			synCahce.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
+			List<Entity> entity;
+			entity = (List<Entity>) synCahce.get(user.getUserId());
 		%>
 		<jsp:include page="/navbars/navbar.jsp"></jsp:include>
 		<h1>Discussion topics you have contributed to</h1>
 		<%
 		if(user!= null) {
-			Filter filter = new FilterPredicate("User", FilterOperator.EQUAL, user.getUserId());
-			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-			Query query = new Query("Discussion").addSort("Date",Query.SortDirection.DESCENDING).setFilter(filter);
-			List<Entity> entity = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(31));
+			if(entity==null) {
+				Filter filter = new FilterPredicate("User", FilterOperator.EQUAL, user.getUserId());
+				DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+				Query query = new Query("Discussion").addSort("Date",Query.SortDirection.DESCENDING).setFilter(filter);
+				entity = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(31));
+				synCahce.put(user.getUserId(), entity);
+			}
 			if(entity.isEmpty()) {
 		%>
 				<p>You have not posted any discussion posts</p>
