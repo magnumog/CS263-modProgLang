@@ -1,4 +1,9 @@
 <%-- //[START all] --%>
+<%@page import="com.sun.corba.se.impl.orbutil.concurrent.Sync"%>
+<%@page import="java.util.logging.Level"%>
+<%@page import="com.google.appengine.api.memcache.ErrorHandlers"%>
+<%@page import="com.google.appengine.api.memcache.MemcacheServiceFactory"%>
+<%@page import="com.google.appengine.api.memcache.MemcacheService"%>
 <%@page import="java.util.List"%>
 <%@page import="com.google.appengine.api.datastore.FetchOptions"%>
 <%@page import="com.google.appengine.api.datastore.Query"%>
@@ -24,12 +29,18 @@
 			UserService userService = UserServiceFactory.getUserService();
 			User user = userService.getCurrentUser();
 			if(user != null) {
-				Filter filter = new FilterPredicate("ToUser", FilterOperator.EQUAL, user.getNickname());
-				DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-				//FOR FUTURE
-				//Query query = new Query("Message").addSort("DateSendt",Query.SortDirection.DESCENDING).setFilter(filter).addSort("MessageRead",Query.SortDirection.DESCENDING);
-				Query query = new Query("Message").addSort("DateSendt",Query.SortDirection.DESCENDING).setFilter(filter);
-				List<Entity> entity = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(100));
+				MemcacheService synCache = MemcacheServiceFactory.getMemcacheService();
+				synCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
+				List<Entity> entity;
+				entity = (List<Entity>)synCache.get(user.getUserId());
+				if(entity==null) {
+					Filter filter = new FilterPredicate("ToUser", FilterOperator.EQUAL, user.getNickname());
+					DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+					Query query = new Query("Message").addSort("DateSendt",Query.SortDirection.DESCENDING).setFilter(filter);
+					entity = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(100));
+					synCache.put(user.getUserId(), entity);
+					
+				}
 				if(entity.isEmpty()) {
 		%>
 					<p>You have no messages</p>

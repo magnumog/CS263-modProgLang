@@ -21,7 +21,7 @@
 			<a href="/">Home</a>			
 			<a href="/user/login.jsp">Sign out</a>
 			<a href="/workout/workout.jsp">Add exercise</a>
-			<a href="/workoutsessions">View sessions</a>
+			<a href="/workout/workoutSessions.jsp">View sessions</a>
 			<a href="/discussion/discussion.jsp">Discussion</a>
 			<a href="/message/message.jsp">Messages</a>
 			<a href="/map/map.jsp">Map</a>

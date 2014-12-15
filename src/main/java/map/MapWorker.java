@@ -1,6 +1,7 @@
 package map;
 
 import java.io.IOException;
+import java.util.logging.Level;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.memcache.ErrorHandlers;
+import com.google.appengine.api.memcache.MemcacheService;
+import com.google.appengine.api.memcache.MemcacheServiceFactory;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
@@ -40,6 +44,10 @@ public class MapWorker extends HttpServlet {
 		entity.setProperty("User", userString);
 		
 		datastore.put(entity);
+		
+		MemcacheService synCache = MemcacheServiceFactory.getMemcacheService();
+		synCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
+		synCache.delete(user.getUserId());
 	}
 
 }

@@ -1,4 +1,4 @@
-<!-- Indices written at Sat, 13 Dec 2014 23:10:02 PST -->
+<!-- Indices written at Sun, 14 Dec 2014 21:04:47 PST -->
 
 <datastore-indexes>
 
@@ -6,6 +6,12 @@
     <datastore-index kind="Workout" ancestor="false" source="auto">
         <property name="User" direction="asc"/>
         <property name="DateOfWorkout" direction="desc"/>
+    </datastore-index>
+
+    <!-- Used 1 time in query history -->
+    <datastore-index kind="Message" ancestor="false" source="auto">
+        <property name="ToUser" direction="asc"/>
+        <property name="DateSendt" direction="desc"/>
     </datastore-index>
 
 </datastore-indexes>

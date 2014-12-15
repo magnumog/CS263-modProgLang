@@ -18,7 +18,6 @@ import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.Filter;
 import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
-import com.google.appengine.api.memcache.ErrorHandler;
 import com.google.appengine.api.memcache.ErrorHandlers;
 import com.google.appengine.api.memcache.MemcacheService;
 import com.google.appengine.api.memcache.MemcacheServiceFactory;
@@ -79,7 +78,7 @@ public class WorkoutSessions extends HttpServlet {
 					String comments = ent.getProperty("Comments").toString();
 
 					out.println("<tr>");
-					out.println("<td>" + date + "</td>");
+//					out.println("<td>" + date + "</td>");
 					out.println("<td>" + session + "</td>");
 					out.println("<td>" + sets + "</td>");
 					out.println("<td>" + weather + "</td>");

@@ -2,6 +2,7 @@ package message;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.logging.Level;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.memcache.ErrorHandlers;
+import com.google.appengine.api.memcache.MemcacheService;
+import com.google.appengine.api.memcache.MemcacheServiceFactory;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
@@ -40,6 +44,10 @@ public class MessageWorker extends HttpServlet {
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		datastore.put(messageEntity);
+		
+		MemcacheService synCache = MemcacheServiceFactory.getMemcacheService();
+		synCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
+		synCache.delete(user.getUserId());
 	}
 
 }
