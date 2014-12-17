@@ -21,7 +21,7 @@
 		        <input type="submit" name="post" value="Tweet!"/>
 	
 		    </form>
-		    <a href="./logout">logout</a>
+		    <a class="btn btn-primary" href="/logout">logout</a>
 		 <%
 		}else{
 		 %>

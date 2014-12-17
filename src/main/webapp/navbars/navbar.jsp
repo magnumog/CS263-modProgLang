@@ -65,6 +65,7 @@
 					<li><a href="/map/newSession.jsp">Setup session</a></li>
 				</ul>
 			</li>
+			<li><a href="/twitter/SignInTwitter.jsp">Twitter</a></li>
    		</ul>
   </div>
 </div>
