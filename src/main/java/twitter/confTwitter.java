@@ -11,7 +11,6 @@ import twitter4j.TwitterFactory;
 import twitter4j.conf.Configuration;
 import twitter4j.conf.ConfigurationBuilder;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class confTwitter.
  */
@@ -27,16 +26,16 @@ public class confTwitter {
 		ConfigurationBuilder builder = new ConfigurationBuilder();
 //		cb.setDebugEnabled(true)
 		
-		builder.setOAuthAccessToken("310273362-huWbROL2e1JbIFtV5nLalXF7VNFqh45MxY2i7lIN");
-		builder.setOAuthAccessTokenSecret("cIkzguvKzFSY2HqVvI46JbeF4Pmt7mXxYlKDLavXL3WUg");
-		builder.setOAuthConsumerKey("vh4vHyTPlYJniTtJMJLAKNwWx");
-		builder.setOAuthConsumerSecret("UgG2KDFoiPUQsnFiGLO5dAdzeO7YZaVuq4zvcQHPy4iAulyIP9");
+		builder.setOAuthAccessToken("2933203662-24k5Fz7Y9ZUTfbVQQByOFvHoiZNlqpU5Crjhgmb");
+		builder.setOAuthAccessTokenSecret("ZKivvn6fjZB1KIXMxZ3y8qv1HmexyEoAjnsJUDw8G2XVF");
+		builder.setOAuthConsumerKey("igY7gB6Yj3X50IyafbEHbtMur");
+		builder.setOAuthConsumerSecret("OjjD9QDqn3y1eFfSwuBqSYKv0Aj8gI5vE8LbJ8tf3vjtojoy9D");
 		Configuration configuration = builder.build();
 		
 		TwitterFactory tf = new TwitterFactory(configuration);
 		Twitter twitter = tf.getInstance();
 		
-	    Query query = new Query("NTNU");
+	    Query query = new Query("TRONDHEIM");
 	    QueryResult result;
 		try {
 			result = twitter.search(query);

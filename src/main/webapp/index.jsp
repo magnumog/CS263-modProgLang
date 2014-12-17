@@ -33,7 +33,7 @@
  			 <p>Welcome to your personal training diary, here you can store workout sessions, discuss and set up a online session.</p>
 		</div>
 		<%
-			} else {
+		} else {
 		%>
 		<div class="jumbotron">
   			<h1>Welcome</h1>
@@ -42,45 +42,52 @@
  
 		</div>
 			<%-- <h3>Twitter</h3>--%>
-		<%
+<%
 			}
-// 		ConfigurationBuilder builder = new ConfigurationBuilder();
-// 		builder.setOAuth2AccessToken("2933203662-24k5Fz7Y9ZUTfbVQQByOFvHoiZNlqpU5Crjhgmb");
-// 		builder.setOAuthAccessTokenSecret("ZKivvn6fjZB1KIXMxZ3y8qv1HmexyEoAjnsJUDw8G2XVF");
-// 		builder.setOAuthConsumerKey("igY7gB6Yj3X50IyafbEHbtMur");
-// 		builder.setOAuthConsumerSecret("OjjD9QDqn3y1eFfSwuBqSYKv0Aj8gI5vE8LbJ8tf3vjtojoy9D");
-// 		Configuration configuration = builder.build();
+%>
+<%
+		//Thanks to Hans-Olav for helping me with the this code
+		//Config the twitter restAPI
+		ConfigurationBuilder builder = new ConfigurationBuilder();
+		//Didnt get it to work using the keys from my twitter application but works fine when
+		//use friends application keys
+		builder.setOAuthAccessToken("310273362-huWbROL2e1JbIFtV5nLalXF7VNFqh45MxY2i7lIN");
+		builder.setOAuthAccessTokenSecret("cIkzguvKzFSY2HqVvI46JbeF4Pmt7mXxYlKDLavXL3WUg");
+		builder.setOAuthConsumerKey("vh4vHyTPlYJniTtJMJLAKNwWx");
+		builder.setOAuthConsumerSecret("UgG2KDFoiPUQsnFiGLO5dAdzeO7YZaVuq4zvcQHPy4iAulyIP9");
+		Configuration configuration = builder.build();
+		TwitterFactory tf = new TwitterFactory(configuration);
+		Twitter twitter = tf.getInstance();
 		
-// 		TwitterFactory twitterFactory = new TwitterFactory(configuration);
-// 		Twitter twitter = twitterFactory.getInstance();
-		
-// 		Query query = new Query("CS263Diary");
-// 		QueryResult result = null;
-// 		try {
-// 			result = twitter.search(query);
-// 		} catch(TwitterException e) {
-// 			e.printStackTrace();
-// 		}
-// 		List<Status> list = result.getTweets();
-		
-// 		if(!list.isEmpty()) {
-// 			for(Status status : list) {
-// 				pageContext.setAttribute("User","@" + status.getUser().getScreenName());
-// 		        pageContext.setAttribute("text",status.getText());
-// 			}
-// 		}
+		//Query
+		Query query = new Query("CS263Diary");
+		QueryResult result = null;
+		try {
+			result = twitter.search(query);
+		} catch (TwitterException e) {
+			e.printStackTrace();
+		}
+		//list of tweets
+		List<Status> tweetList = result.getTweets();
+		if(!tweetList.isEmpty()){
+			for (Status status : tweetList){
+        		pageContext.setAttribute("twitterUser","@" + status.getUser().getScreenName());
+        		pageContext.setAttribute("twitterText",status.getText());
 		%>
-<!-- 		<div class="container"> -->
-<!-- 			<div class="row"> -->
-<!-- 				<div class="col-md-10 col-lg-10"> -->
-<!-- 					<div class="jumbotron twitter"> -->
-<%-- 						<h3>${fn:escapeXml(User)}</h3> --%>
-<%-- 						<p>${fn:escapeXml(Text)}</p> --%>
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-	
+		<div class="container">
+			<div class="row">
+				<div class="col-md-10 col-lg-10">
+					<div class="jumbotron twitter">
+						<h3>${fn:escapeXml(twitterUser)}</h3>
+						<p>${fn:escapeXml(twitterText)}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+<%	
+	}
+}
+%>
 	</body>
 
 </html>
