@@ -19,12 +19,20 @@
 			if(user != null) {
 				pageContext.setAttribute("user",user);
 		%>
-		<h1>Hi ${fn:escapeXml(user.nickname)} Welcome to your personal training diary wlk</h1>
+		<div class="jumbotron">
+ 			 <h1>Hi, ${fn:escapeXml(user.nickname)} </h1>
+ 			 <p>Welcome to your personal training diary, here you can store workout sessions, discuss and set up a online session.</p>
+		</div>
 		<%
 			} else {
 		%>
-		<h1>Welcome to your personal training diary please sign in to start using it</h1>
-		<h2>You need a google account to start using the diary</h2>
+		<div class="jumbotron">
+  			<h1>Welcome</h1>
+				<p>to your personal training diary please sign in to start using it</p>
+				<p>You need a google account to start using the diary</p>
+ 
+		</div>
+			
 		<%
 			}
 		%>

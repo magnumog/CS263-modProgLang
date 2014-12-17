@@ -31,6 +31,7 @@ public class MapWorker extends HttpServlet {
 		String lat = req.getParameter("Latitude");
 		String lng = req.getParameter("Longtitude");
 		String userString = req.getParameter("User");
+		String time = req.getParameter("Time");
 		
 		Entity entity = new Entity("Place");
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
@@ -42,12 +43,9 @@ public class MapWorker extends HttpServlet {
 		entity.setProperty("Latitude", lat);
 		entity.setProperty("Longtitude", lng);
 		entity.setProperty("User", userString);
+		entity.setProperty("Time", time);
 		
 		datastore.put(entity);
-		
-		MemcacheService synCache = MemcacheServiceFactory.getMemcacheService();
-		synCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
-		synCache.delete(user.getUserId());
 	}
 
 }

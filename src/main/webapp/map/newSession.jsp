@@ -10,7 +10,8 @@
 		<form action="/mapinfo" method="post">
 			<input type="text" placeholder="Session name" name="name">
 			<textarea placeholder="Session details" rows="3" cols="60" name="details"></textarea>
-			<input type="datetime" name="time">
+			<input type="date" name="date">
+			<input type="time" name="time">
 			<input type="submit" value="continue to set location"> 
 		</form>
 	</body>

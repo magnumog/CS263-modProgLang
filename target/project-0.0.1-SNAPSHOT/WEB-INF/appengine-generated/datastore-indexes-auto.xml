@@ -1,23 +1,35 @@
-<!-- Indices written at Tue, 16 Dec 2014 11:00:50 PST -->
+<!-- Indices written at Tue, 16 Dec 2014 23:52:00 PST -->
 
 <datastore-indexes>
 
-    <!-- Used 8 times in query history -->
+    <!-- Used 12 times in query history -->
     <datastore-index kind="Workout" ancestor="false" source="auto">
         <property name="User" direction="asc"/>
         <property name="DateOfWorkout" direction="desc"/>
     </datastore-index>
 
-    <!-- Used 2 times in query history -->
+    <!-- Used 4 times in query history -->
     <datastore-index kind="Message" ancestor="false" source="auto">
         <property name="ToUser" direction="asc"/>
         <property name="DateSendt" direction="desc"/>
     </datastore-index>
 
-    <!-- Used 1 time in query history -->
+    <!-- Used 2 times in query history -->
     <datastore-index kind="Discussion" ancestor="false" source="auto">
         <property name="User" direction="asc"/>
         <property name="Date" direction="desc"/>
+    </datastore-index>
+
+    <!-- Used 4 times in query history -->
+    <datastore-index kind="Discuss" ancestor="false" source="auto">
+        <property name="Topic" direction="asc"/>
+        <property name="Date" direction="asc"/>
+    </datastore-index>
+
+    <!-- Used 1 time in query history -->
+    <datastore-index kind="Discussion" ancestor="false" source="auto">
+        <property name="Topic" direction="asc"/>
+        <property name="Date" direction="asc"/>
     </datastore-index>
 
 </datastore-indexes>

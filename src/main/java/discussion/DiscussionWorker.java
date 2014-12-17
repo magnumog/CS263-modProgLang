@@ -37,11 +37,6 @@ public class DiscussionWorker extends HttpServlet {
 		discussionEntity.setProperty("Date", date);
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		datastore.put(discussionEntity);
-		
-//		MemcacheService synCache = MemcacheServiceFactory.getMemcacheService();
-//		synCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
-//		synCache.delete(user.getUserId()+"yourDiscussion");
-		
+		datastore.put(discussionEntity);		
 	}
 }

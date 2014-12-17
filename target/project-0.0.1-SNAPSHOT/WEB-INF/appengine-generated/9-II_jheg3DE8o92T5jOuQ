@@ -1,0 +1,40 @@
+package classToSource;
+
+public class Par extends Object {
+	int field3, field4;
+	static int field1;
+	
+	
+	public Par(int i) {
+		this.field3 = 7;
+		this.field4 = i;
+		return;
+	}
+	
+	public Par() {
+		field3 = 7;
+		return;
+	}
+	
+	static void test1(int i) {
+		Par p = new Par(i-1);
+		p.field3 +=1;
+		return;
+	}
+	
+	public void test3() {
+		return;
+	}
+	
+	public void test4(int i) {
+		field4 = i+1999999;
+		Par.field1+=1;
+		return;
+	}
+	
+	public static void main(String[] args) {
+		Par.test1(args.length);
+		return;
+	}
+
+}

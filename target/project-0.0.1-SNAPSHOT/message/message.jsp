@@ -44,13 +44,14 @@
 					<p>You have no messages</p>
 		<%
 				} else {
-		%>			<div class="centertable">
+		%>
 					<table>
 						<tr>
 							<td>Topic</td>
 							<td>Message</td>
 							<td>From user</td>
 							<td>Date sendt</td>
+							<td>Respond</td>
 						</tr>
 		<%
 					for(Entity ent : entity) {
@@ -64,12 +65,12 @@
 							<td><%=message %></td>
 							<td><%=fromUser %></td>
 							<td><%=date %></td>
+							<td><a href="/message/respondMessage.jsp?FromUser=<%=ent.getProperty("FromUser")%>&Topic=<%=topic%>&Post=<%=message%>">respond</a></td>
 						</tr>
 		<% 
 					}
 		%>
 					</table>
-					</div>
 		<%
 				}
 			} else {

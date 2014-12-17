@@ -14,7 +14,8 @@ public class WorkoutInfo extends HttpServlet {
 		HttpSession session = req.getSession();
 		session.setAttribute("WorkoutTopic",req.getParameter("name"));
 		session.setAttribute("WorkoutDetails",req.getParameter("details"));
-		session.setAttribute("Date",req.getParameter("time"));
+		session.setAttribute("Date",req.getParameter("date"));
+		session.setAttribute("Time",req.getParameter("time"));
 		resp.sendRedirect("/map/location.jsp");
 	}
 
