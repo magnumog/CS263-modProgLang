@@ -17,8 +17,8 @@
 			<div class="navbar-collapse collapse navbar-responsive-collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="/">Home</a></li>
-					<li><a href="/user/login.jsp">Sign in</a></li>
-					<%-- <li><a href="/sign">Sign in</a></li> --%>
+					<%-- <li><a href="/user/login.jsp">Sign in</a></li>--%>
+					<li><a href="/sign">Sign in</a></li>
 				</ul>
 			</div>
 		</div>
@@ -34,8 +34,8 @@
   	</div>
   	<div class="navbar-collapse collapse navbar-responsive-collapse">
     	<ul class="nav navbar-nav">
-			<li><a href="/user/login.jsp">Sign out</a></li>
-   	<%-- 	<li><a href="/signOut">Sign out</a></li> --%>
+			<%--<li><a href="/user/login.jsp">Sign out</a></li>--%>
+   			<li><a href="/signOut">Sign out</a></li>
       		<li class="dropdown">
         		<a href="/workout/workout.jsp" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Workout <b class="caret"></b></a>
         		<ul class="dropdown-menu">

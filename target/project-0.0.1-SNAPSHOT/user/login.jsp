@@ -11,6 +11,7 @@
 	<body>
 		<jsp:include page="/navbars/navbar.jsp"></jsp:include>
 		<h1>Sign inn to PTD</h1>
+		<%-- //[START User] --%>
 		<% 
 			UserService userService = UserServiceFactory.getUserService();
 			User user = userService.getCurrentUser();
@@ -26,7 +27,7 @@
 		<%
 		}
 		%>
-		
+		<%-- //[END User] --%>
 	</body>
 </html>
 <%-- //[END all] --%>

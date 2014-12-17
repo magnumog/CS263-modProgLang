@@ -66,12 +66,16 @@
 		<jsp:include page="/navbars/navbar.jsp"></jsp:include>
 		<h1>Find a workout session marked on the map close to you</h1>
 		<div id="map_canvas" style="width:80%;height:400px;padding-left:10%;padding-right:10%"></div>
-		<h2>Todays workouts</h2>
+		<h2>workouts</h2>
+		<%-- //[START User] --%>
 <%
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
 		List<Entity> entity;
 		if(user!=null) {
+			%>
+			<%-- //[START Datastore] --%>
+			<%
 			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 			Query query = new Query("Place").addSort("Date", Query.SortDirection.DESCENDING);
 			entity = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(99));
@@ -115,7 +119,8 @@
 			}
 		}
 %>
-		
+	<%-- //[END Datastore] --%>	
+	<%-- //[END User] --%>
 	</body>
 </html>
 <%-- //[END all] --%>

@@ -23,7 +23,7 @@
 				<textarea name="comments" placeholder="Comments" rows="3" cols="60"></textarea>
 				<br>
 				<input type="file" name="file">
-			<input type="submit" value="submit workout">
+			<input class="btn btn-primary" type="submit" value="submit workout">
 		</form>
 	</body>
 </html>

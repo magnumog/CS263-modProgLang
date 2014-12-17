@@ -16,6 +16,7 @@
 	</head>
 	<body>
 		<jsp:include page="/navbars/navbar.jsp"></jsp:include>
+		<%-- //[START User] --%>
 		<%
 			UserService userService = UserServiceFactory.getUserService();
 			User user = userService.getCurrentUser();
@@ -24,6 +25,9 @@
 				<p>You need to be signed inn to send a message to another user</p>
 		<%		
 			} else {
+		%>
+		<%-- //[START Datastore] --%>
+		<%
 				DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 				Query query = new Query("Message");
 				List<Entity> messages = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(31));
@@ -44,6 +48,8 @@
 				}
 			}
 		%>
+		<%-- //[END Datastore] --%>
+		<%-- //[END User] --%>
 	</body>
 </html>
 <%-- //[END all] --%>

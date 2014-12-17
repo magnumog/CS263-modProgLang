@@ -23,21 +23,28 @@
 	<body>
 		<jsp:include page="/navbars/navbar.jsp"></jsp:include>
 		<h1>Your messages</h1>
+		<%-- //[START User] --%>
 		<%
 			UserService userService = UserServiceFactory.getUserService();
 			User user = userService.getCurrentUser();
 			if(user != null) {
+		%>
+		<%-- //[START Memcahce] --%>
+		<%
 				MemcacheService synCache = MemcacheServiceFactory.getMemcacheService();
 				synCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
 				List<Entity> entity;
 				entity = (List<Entity>)synCache.get(user.getUserId()+"message");
 				if(entity==null || entity.isEmpty()) {
+		%>
+		<%-- //[START Datastore] --%>
+		<%
 					Filter filter = new FilterPredicate("ToUser", FilterOperator.EQUAL, user.getNickname());
 					DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 					Query query = new Query("Message").addSort("DateSendt",Query.SortDirection.DESCENDING).setFilter(filter);
 					entity = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(100));
 					synCache.put(user.getUserId()+"message", entity);
-					
+			
 				}
 				if(entity.isEmpty()) {
 		%>
@@ -79,6 +86,9 @@
 		<%
 			}
 		%>
+		<%-- //[END Datastore] --%>
+		<%-- //[END Memcahce] --%>
+		<%-- //[END User] --%>
 	</body>
 </html>
 <%-- //[END all] --%>
