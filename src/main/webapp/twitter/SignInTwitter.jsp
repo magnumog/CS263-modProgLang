@@ -14,7 +14,7 @@
 		<%
 		if(null != session.getAttribute("twitter")){
 		%>		
-		    <form action="./post" method="post">
+		    <form action="/post" method="post">
 		    	<h3 name="title">I am using a new training diary </h3><br>
 				<h3 name="link">http://notional-buffer-748.appspot.com</h3>
 		        <textarea cols="80" rows="2" name="text" placeholder="and add additional text if you want!" ></textarea>
