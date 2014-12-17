@@ -19,8 +19,18 @@ import com.google.appengine.api.users.UserServiceFactory;
 
 import static com.google.appengine.api.taskqueue.TaskOptions.Builder.withUrl;
 
+/**
+ * The Class MessageEnqueue.
+ */
 public class MessageEnqueue extends HttpServlet {
 	
+	/**
+	 * doPost - the message to the queue with all info
+	 * @param HttpServletRequest req
+	 * @param HttpServletRespons resp
+	 * @throws IOException
+	 * @throws ServletException
+	 */
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException,ServletException {
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();

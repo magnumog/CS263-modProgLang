@@ -11,8 +11,18 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
+/**
+ * The Class UserServlet.
+ */
 public class UserServlet extends HttpServlet {
 	
+	/**
+	 * doGet - user signs inn to application
+	 * @param HttpServletRequest req
+	 * @param HttpServletRespons resp
+	 * @throws IOException
+	 * @throws ServletException
+	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException,ServletException {
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();

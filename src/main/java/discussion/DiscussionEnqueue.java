@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.aop.ThrowsAdvice;
+
 import com.google.appengine.api.memcache.ErrorHandlers;
 import com.google.appengine.api.memcache.MemcacheService;
 import com.google.appengine.api.memcache.MemcacheServiceFactory;
@@ -20,8 +22,18 @@ import com.google.appengine.api.users.UserServiceFactory;
 
 import static com.google.appengine.api.taskqueue.TaskOptions.Builder.withUrl;
 
+/**
+ * The Class DiscussionEnqueue.
+ */
 public class DiscussionEnqueue extends HttpServlet {
 	
+	/** 
+	 * doPost - posts a discussion post
+	 * @param HttpServletRequest req
+	 * @param HttpServletRespons resp
+	 * @throws IOException
+	 * @thorws ServletException
+	 */
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();

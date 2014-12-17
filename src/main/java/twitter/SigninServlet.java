@@ -15,9 +15,15 @@ import java.io.IOException;
  * The Class SigninServlet.
  */
 public class SigninServlet extends HttpServlet {
+    
     /**
- 	 * doGet - Sign in with twitter 
- 	 */
+     * doGet - Sign in with twitter.
+     *
+     * @param request the request
+     * @param response the response
+     * @throws ServletException the servlet exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Twitter twitter = new TwitterFactory().getInstance();
         request.getSession().setAttribute("twitter", twitter);

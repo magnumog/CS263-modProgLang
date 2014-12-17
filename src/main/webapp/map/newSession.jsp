@@ -12,7 +12,7 @@
 			<textarea placeholder="Session details" rows="3" cols="60" name="details"></textarea>
 			<input type="date" name="date">
 			<input type="time" name="time">
-			<input type="submit" value="continue to set location"> 
+			<input class="btn btn-primary" type="submit" value="continue to set location"> 
 		</form>
 	</body>
 </html>

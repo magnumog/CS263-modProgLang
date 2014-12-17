@@ -70,11 +70,12 @@
 <%
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
+		List<Entity> entity;
 		if(user!=null) {
 			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-			Query query = new Query("Place");
-			List<Entity> entity = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(99));
-			if(entity.isEmpty() || entity==null) {
+			Query query = new Query("Place").addSort("Date", Query.SortDirection.DESCENDING);
+			entity = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(99));
+			if(entity.isEmpty()) {
 %>
 				<p>There are no sessions set up today</p>				
 <%
@@ -89,24 +90,26 @@
 						<td><h3>Time</h3></td>
 					</tr>
 <%
-					for(Entity ent : entity) {
-						String topic = ent.getProperty("Topic").toString();
-						String info = ent.getProperty("Info").toString();
-						String adr = ent.getProperty("Adress").toString();
-						String date = ent.getProperty("Date").toString();
-						String time = ent.getProperty("Time").toString();
+// 					for(Entity ent : entity) {
+// 						//if(ent!=null) {
+// 							String topic = ent.getProperty("Topic").toString();
+// 							String info = ent.getProperty("Info").toString();
+// 							String adr = ent.getProperty("Adress").toString();
+// 							String date = ent.getProperty("Date").toString();
+// 							String time = ent.getProperty("Time").toString();		
 %>
 
-					<tr>
-						<td><%=topic %></td>
-						<td><%=info %></td>
-						<td><%=adr %></td>
-						<td><%=date %></td>
-						<td><%=time %></td>
-					</tr>
-<%					
-					}
-%>
+<!-- 						<tr> -->
+<%-- 							<td><%=topic %></td> --%>
+<%-- 							<td><%=info %></td> --%>
+<%-- 							<td><%=adr %></td> --%>
+<%-- 							<td><%=date %></td> --%>
+<%-- 							<td><%=time %></td> --%>
+<!-- 						</tr> -->
+<%-- <%					 --%>
+<%--  						}--%>
+<%-- 					}--%>
+<%-- %> --%>
 				</table>
 <%				
 			}

@@ -18,11 +18,15 @@
 	</head>
 	<body>
 		<jsp:include page="/navbars/navbar.jsp"></jsp:include>
+		<%-- //[START User] --%>
 <%
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
 		String topic = request.getParameter("Topic");
 		if(user!= null) {
+%>
+			<%-- //[START Datastore] --%>
+<%
 			Filter filter = new FilterPredicate("Topic",FilterOperator.EQUAL,topic);
 			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 			Query query = new Query("Discussion").addSort("Date",Query.SortDirection.ASCENDING).setFilter(filter);
@@ -54,13 +58,15 @@
 					<br>
 					<textarea name="post" placeholder="Discuss" rows="3" cols="60"></textarea>
 					<br>
-					<input type="submit" value="Post new discussion">
+					<input class="btn btn-primary" type="submit" value="Post new discussion">
 				</form>				
 <%
 			}
 		}
 
 %>
+		<%-- //[END Datastore] --%>
+		<%-- //[END User] --%>
 	</body>
 </html>
 <%-- //[END all] --%>

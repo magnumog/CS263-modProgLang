@@ -23,9 +23,21 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
+/**
+ * The Class Enqueue.
+ */
 public class Enqueue extends HttpServlet {
+	
+	/** The blob. */
 	private BlobstoreService blob = BlobstoreServiceFactory.getBlobstoreService();
 	
+	/**
+	 * doPost - gets all info and passes it on to worker with queue
+	 * @param HttpServletRequest req
+	 * @param HttpServletRespons resp
+	 * @throws IOException
+	 * @throws ServletException
+	 */
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();

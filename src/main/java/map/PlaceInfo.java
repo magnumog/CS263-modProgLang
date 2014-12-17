@@ -25,8 +25,18 @@ import com.google.appengine.api.users.UserServiceFactory;
 import static com.google.appengine.api.taskqueue.TaskOptions.Builder.withUrl;
 
 
+/**
+ * The Class PlaceInfo.
+ */
 public class PlaceInfo extends HttpServlet {
 	
+	/**
+	 * doPost - Posts the entity from the location and info into place datastore
+	 * @param HttpServletRequest req
+	 * @param HttpServletRespons resp
+	 * @throws IOException
+	 * @throws ServletException
+	 */
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();

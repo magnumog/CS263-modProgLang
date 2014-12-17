@@ -23,9 +23,13 @@
 		<jsp:include page="/csslink.jsp"></jsp:include>
 	</head>
 	<body>
+		<%-- //[START User] --%>
 		<%
 			UserService userService = UserServiceFactory.getUserService();
 			User user = userService.getCurrentUser();
+		%>
+			<%-- //[START Memcahce] --%>
+		<%
 			MemcacheService synCahce = MemcacheServiceFactory.getMemcacheService();
 			synCahce.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
 			List<Entity> entity;
@@ -33,6 +37,7 @@
 		%>
 		<jsp:include page="/navbars/navbar.jsp"></jsp:include>
 		<h1>Discussion topics you have contributed to</h1>
+		<%-- //[START Datastore] --%>
 		<%
 		if(user!= null) {
 			if(entity==null || entity.isEmpty()) {
@@ -41,6 +46,9 @@
 				Query query = new Query("Discussion").addSort("Date",Query.SortDirection.DESCENDING).setFilter(filter);
 				entity = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(31));
 				synCahce.put(user.getUserId()+"yourDiscussion", entity);
+		%>
+		<%-- //[End Memcache] --%>
+		<%
 			}
 			if(entity.isEmpty()) {
 		%>
@@ -79,6 +87,8 @@
 		<%
 		}
 		%>
+		<%-- //[END Datastore] --%>
+		<%-- //[END User] --%>
 	</body>
 </html>
 <%-- //[END all] --%>

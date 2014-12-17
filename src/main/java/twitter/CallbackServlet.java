@@ -10,19 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class CallbackServlet.
  */
 public class CallbackServlet extends HttpServlet {
-    
-    /** The Constant serialVersionUID. */
-    private static final long serialVersionUID = 1657390011452788111L;
 
     /**
- 	 * doGet - Twitter setup
- 	 *
- 	 */
+     * doGet - Twitter setup.
+     *
+     * @param request the request
+     * @param response the response
+     * @throws ServletException the servlet exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Twitter twitter = (Twitter) request.getSession().getAttribute("twitter");
         RequestToken requestToken = (RequestToken) request.getSession().getAttribute("requestToken");

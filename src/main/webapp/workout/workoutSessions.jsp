@@ -22,15 +22,22 @@
 	</head>
 	<body>
 				<jsp:include page="/navbars/navbar.jsp"></jsp:include>
+		<%-- //[START User] --%>
 		<%
 			UserService userService = UserServiceFactory.getUserService();
 			User user = userService.getCurrentUser();
+		%>
+		<%-- //[START Memcahce] --%>
+		<%
 			MemcacheService synCache = MemcacheServiceFactory.getMemcacheService();
 			synCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
 			List<Entity> entity;
 			entity = (List<Entity>) synCache.get(user.getUserId()+"workout");
 			if(entity==null || entity.isEmpty()) {
 				System.out.println("Nothing in memcahce");
+		%>
+		<%-- //[START Datastore] --%>
+		<%
 				Filter filter = new FilterPredicate("User",FilterOperator.EQUAL,user.getUserId());
 				DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 				Query query = new Query("Workout").addSort("DateOfWorkout",Query.SortDirection.DESCENDING).setFilter(filter);
@@ -79,7 +86,9 @@
 			}
 		%>
 		
-		
+		<%-- //[END	Datastore] --%>
+		<%-- //[END Memcahce] --%>
+		<%-- //[END User] --%>
 	</body>
 </html>
 

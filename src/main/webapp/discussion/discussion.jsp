@@ -17,11 +17,15 @@
 	<body>
 		<jsp:include page="/navbars/navbar.jsp"></jsp:include>
 		<h1>Discussion forum for your personal training diary</h1>
+		<%-- //[START user] --%>
 <%
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
 		List<Entity> entity;		
 		if(user!=null) {
+%>
+			<%-- //[START Datastore] --%>
+<%
 			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 			Query query = new Query("Discussion").addSort("Date",Query.SortDirection.DESCENDING);
 			entity = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(1000));
@@ -49,6 +53,8 @@
 			}
 		}
 %>
+	<%-- //[END Datastore] --%>
+	<%-- //[END User] --%>
 	</body>
 </html>
 <%-- //[END all] --%>

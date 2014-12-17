@@ -14,7 +14,7 @@
 			<br>
 			<textarea name="Message" placeholder="Message" rows="3" cols="60"required></textarea>
 			<br>
-			<input type="submit" value="Send message">
+			<input class="btn btn-primary" type="submit" value="Send message">
 		</form>
 	</body>
 </html>

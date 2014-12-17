@@ -9,11 +9,11 @@
 	</head>
 	<body>
 		<jsp:include page="/navbars/navbar.jsp"></jsp:include>
+		<%-- //[START User] --%>
 <%
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
 		if(user!=null) {
-			
 		String toUser=request.getParameter("FromUser");
 		String Topic=request.getParameter("Topic");
 		String message=request.getParameter("Post");
@@ -30,11 +30,12 @@
 			<br>
 			<textarea name="Message" placeholder="Message" rows="3" cols="60"required></textarea>
 			<br>
-			<input type="submit" value="Send message">
+			<input class="btn btn-primary" type="submit" value="Send message">
 		</form>
 <% 
 		}
 %>		
+		<%-- //[END User] --%>
 	</body>
 </html>
 <%-- //[END all] --%>

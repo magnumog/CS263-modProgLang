@@ -9,7 +9,7 @@
 		<form action="/discussionenqueue" method="post">
 				<textarea name="topic" placeholder="topic" rows="3" cols="60"></textarea>
 				<textarea name="post" placeholder="Discuss" rows="3" cols="60"></textarea>
-			<input type="submit" value="Post new discussion">
+			<input class="btn btn-primary" type="submit" value="Post new discussion">
 		</form>
 	</body>
 </html>
