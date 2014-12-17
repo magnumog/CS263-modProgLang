@@ -8,9 +8,12 @@
 		<jsp:include page="/navbars/navbar.jsp"></jsp:include>
 		<h1>Send message to other users</h1>
 		<form action="/messageenqueue" method="post">
-			<input type="text" placeholder="Username" name="ToUser">
-			<input type="text" placeholder="Topic" name="Topic">
-			<textarea name="Message" placeholder="Message" rows="3" cols="60"></textarea>
+			<input type="text" placeholder="Username" name="ToUser" required>
+			<br>
+			<input type="text" placeholder="Topic" name="Topic" required>
+			<br>
+			<textarea name="Message" placeholder="Message" rows="3" cols="60"required></textarea>
+			<br>
 			<input type="submit" value="Send message">
 		</form>
 	</body>

@@ -45,9 +45,9 @@ public class MessageWorker extends HttpServlet {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		datastore.put(messageEntity);
 		
-		MemcacheService synCache = MemcacheServiceFactory.getMemcacheService();
-		synCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
-		synCache.delete(user.getUserId());
+//		MemcacheService synCache = MemcacheServiceFactory.getMemcacheService();
+//		synCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
+//		synCache.delete(user.getUserId()+"message");
 	}
 
 }

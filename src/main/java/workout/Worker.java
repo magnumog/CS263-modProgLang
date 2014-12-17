@@ -27,6 +27,7 @@ public class Worker extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
+		
 		String userString = req.getParameter("user");
 		String date = req.getParameter("date");
 		String workout = req.getParameter("workout");
@@ -50,9 +51,9 @@ public class Worker extends HttpServlet {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		datastore.put(workoutEntity);
 		
-		MemcacheService synCache = MemcacheServiceFactory.getMemcacheService();
-		synCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
-		synCache.delete(user.getUserId());
+//		MemcacheService synCache = MemcacheServiceFactory.getMemcacheService();
+//		synCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
+//		synCache.delete(user.getUserId()+"workout");
 				
 	}
 

@@ -32,12 +32,17 @@ public class PlaceInfo extends HttpServlet {
 		String userString = user.getUserId().toString();
 //		String userString = "Shot";
 		
-		HttpSession session = req.getSession();
-		Queue queue = QueueFactory.getDefaultQueue();
-		queue.add(withUrl("/mapworker").param("Topic", session.getAttribute("WorkoutTopic").toString()).param("Info", session.getAttribute("WorkoutDetails").toString()).param("Date",session.getAttribute("Date").toString()).param("Adress", workoutAdr)
-				.param("Latitude", lat).param("Longtitude", lng).param("User", userString));
+		if(user!=null) {
+			HttpSession session = req.getSession();
+			Queue queue = QueueFactory.getDefaultQueue();
+			queue.add(withUrl("/mapworker").param("Topic", session.getAttribute("WorkoutTopic").toString()).param("Info", session.getAttribute("WorkoutDetails").toString()).param("Date",session.getAttribute("Date").toString()).param("Adress", workoutAdr)
+					.param("Latitude", lat).param("Longtitude", lng).param("User", userString));
+			resp.sendRedirect("/map/map.jsp");
+			
+		} else {
+			resp.sendRedirect("/error.jsp");
+		}
 		
-		resp.sendRedirect("/map/map.jsp");
 		
 	}
 }

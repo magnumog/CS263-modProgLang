@@ -49,7 +49,6 @@
 	</head>
 	<body onload="init()">
 		<jsp:include page="/navbars/navbar.jsp"></jsp:include>
-		<jsp:include page="/navbars/mapbar.jsp"></jsp:include>
 		<h1>Use google maps to find other workout sessions or create a session your self</h1>
 		<div id="map_canvas" style="width:100%;height:400px"></div>
 		

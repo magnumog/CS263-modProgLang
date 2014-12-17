@@ -4,6 +4,7 @@ import static com.google.appengine.api.taskqueue.TaskOptions.Builder.withUrl;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.logging.Level;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.appengine.api.blobstore.BlobKey;
 import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
+import com.google.appengine.api.memcache.ErrorHandlers;
+import com.google.appengine.api.memcache.MemcacheService;
+import com.google.appengine.api.memcache.MemcacheServiceFactory;
 import com.google.appengine.api.taskqueue.Queue;
 import com.google.appengine.api.taskqueue.QueueFactory;
 import com.google.appengine.api.users.User;
@@ -26,6 +30,10 @@ public class Enqueue extends HttpServlet {
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
 		
+		MemcacheService synCahce = MemcacheServiceFactory.getMemcacheService();
+		synCahce.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
+		synCahce.delete(user.getUserId()+"workout");
+		
 		//blobstore
 		Map<String, BlobKey> blobMap = blob.getUploadedBlobs(req);
 		BlobKey blobKey = blobMap.get("file");
@@ -35,12 +43,20 @@ public class Enqueue extends HttpServlet {
 		String sets = req.getParameter("sets");
 		String weatherConditions = req.getParameter("weather");
 		String commentsToWorkout = req.getParameter("comments");
-		String file = blobKey.getKeyString();
+		String file="";
+		if(blobKey!=null) {
+			file = blobKey.getKeyString();			
+		}
 		
-		Queue queue = QueueFactory.getDefaultQueue();
-		queue.add(withUrl("/worker").param("user", user.getUserId()).param("date", date).param("workout", workout).param("sets", sets).param("weather",weatherConditions).param("comments", commentsToWorkout).param("file", file));
+		if(user!=null) {
+			Queue queue = QueueFactory.getDefaultQueue();
+			queue.add(withUrl("/worker").param("user", user.getUserId()).param("date", date).param("workout", workout).param("sets", sets).param("weather",weatherConditions).param("comments", commentsToWorkout).param("file", file));
+			resp.sendRedirect("/");
+			
+		} else {
+			resp.sendRedirect("/error.jsp");
+		}
 		
-		resp.sendRedirect("/workout/workoutQueue.jsp?workout="+workout);
 	}
 
 }

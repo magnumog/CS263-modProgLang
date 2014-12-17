@@ -8,7 +8,6 @@
 	<body>
 		<jsp:include page="/navbars/navbar.jsp"></jsp:include>
 		<h1>Discussion forum for your personal training diary</h1>
-		<jsp:include page="/navbars/discussionnav.jsp"></jsp:include>
 	</body>
 </html>
 <%-- //[END all] --%>

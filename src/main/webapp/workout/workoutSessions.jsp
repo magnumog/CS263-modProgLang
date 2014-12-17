@@ -28,14 +28,14 @@
 			MemcacheService synCache = MemcacheServiceFactory.getMemcacheService();
 			synCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
 			List<Entity> entity;
-			entity = (List<Entity>) synCache.get(user.getUserId());
-			if(entity==null) {
+			entity = (List<Entity>) synCache.get(user.getUserId()+"workout");
+			if(entity==null || entity.isEmpty()) {
 				System.out.println("Nothing in memcahce");
 				Filter filter = new FilterPredicate("User",FilterOperator.EQUAL,user.getUserId());
 				DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 				Query query = new Query("Workout").addSort("DateOfWorkout",Query.SortDirection.DESCENDING).setFilter(filter);
 				entity = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(31));
-				synCache.put(user.getUserId(), entity);
+				synCache.put(user.getUserId()+"workout", entity);
 			}
 			if(entity.isEmpty()) {
 		%>
@@ -63,7 +63,8 @@
 							<td><%=ent.getProperty("Weather").toString() %></td>
 							<td><%=ent.getProperty("Comments").toString() %></td>
 		<%
-							if(ent.getProperty("file")!=null) {
+							String file = ent.getProperty("file").toString();
+							if(file!=null && file.length()>=1) {
 		%>
 								<td><a href=/serve?blob-key=<%=ent.getProperty("file").toString()%> target=_blank>File</a></td>
 		<%						

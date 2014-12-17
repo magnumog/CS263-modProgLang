@@ -12,11 +12,11 @@
 		<jsp:include page="/navbars/navbar.jsp"></jsp:include>
 		<h1>Add workout</h1>
 		<form action="<%= blobstoreService.createUploadUrl("/enqueue")%>" method="post" enctype="multipart/form-data">
-				<input type="date" name="date">
+				<input type="date" name="date" required>
 				<br>
-				<textarea name="workout" placeholder="Training session" rows="9" cols="60"></textarea>
+				<textarea name="workout" placeholder="Training session" rows="9" cols="60" required></textarea>
 				<br>
-				<textarea name="sets" placeholder="Number of sets completed" rows="3" cols="60"></textarea>
+				<textarea name="sets" placeholder="Number of sets completed" rows="3" cols="60" required></textarea>
 				<br>
 				<textarea name="weather" placeholder="Weather conditions" rows="3" cols="60"></textarea>
 				<br>

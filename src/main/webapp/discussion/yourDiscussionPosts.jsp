@@ -29,18 +29,18 @@
 			MemcacheService synCahce = MemcacheServiceFactory.getMemcacheService();
 			synCahce.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
 			List<Entity> entity;
-			entity = (List<Entity>) synCahce.get(user.getUserId());
+			entity = (List<Entity>) synCahce.get(user.getUserId()+"yourDiscussion");
 		%>
 		<jsp:include page="/navbars/navbar.jsp"></jsp:include>
 		<h1>Discussion topics you have contributed to</h1>
 		<%
 		if(user!= null) {
-			if(entity==null) {
+			if(entity==null || entity.isEmpty()) {
 				Filter filter = new FilterPredicate("User", FilterOperator.EQUAL, user.getUserId());
 				DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 				Query query = new Query("Discussion").addSort("Date",Query.SortDirection.DESCENDING).setFilter(filter);
 				entity = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(31));
-				synCahce.put(user.getUserId(), entity);
+				synCahce.put(user.getUserId()+"yourDiscussion", entity);
 			}
 			if(entity.isEmpty()) {
 		%>

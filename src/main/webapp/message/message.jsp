@@ -1,5 +1,4 @@
 <%-- //[START all] --%>
-<%@page import="com.sun.corba.se.impl.orbutil.concurrent.Sync"%>
 <%@page import="java.util.logging.Level"%>
 <%@page import="com.google.appengine.api.memcache.ErrorHandlers"%>
 <%@page import="com.google.appengine.api.memcache.MemcacheServiceFactory"%>
@@ -23,7 +22,6 @@
 	</head>
 	<body>
 		<jsp:include page="/navbars/navbar.jsp"></jsp:include>
-		<jsp:include page="/navbars/messagenav.jsp"></jsp:include>
 		<h1>Your messages</h1>
 		<%
 			UserService userService = UserServiceFactory.getUserService();
@@ -32,13 +30,13 @@
 				MemcacheService synCache = MemcacheServiceFactory.getMemcacheService();
 				synCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
 				List<Entity> entity;
-				entity = (List<Entity>)synCache.get(user.getUserId());
-				if(entity==null) {
+				entity = (List<Entity>)synCache.get(user.getUserId()+"message");
+				if(entity==null || entity.isEmpty()) {
 					Filter filter = new FilterPredicate("ToUser", FilterOperator.EQUAL, user.getNickname());
 					DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 					Query query = new Query("Message").addSort("DateSendt",Query.SortDirection.DESCENDING).setFilter(filter);
 					entity = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(100));
-					synCache.put(user.getUserId(), entity);
+					synCache.put(user.getUserId()+"message", entity);
 					
 				}
 				if(entity.isEmpty()) {
